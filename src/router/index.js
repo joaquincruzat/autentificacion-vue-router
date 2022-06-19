@@ -21,6 +21,7 @@ const routes = [
     path: "/success",
     name: "success",
     component: SuccessfulLoginView,
+    meta: { login: true },
   },
 ];
 
@@ -30,4 +31,15 @@ const router = new VueRouter({
   routes,
 });
 
+import { getAuth } from "firebase/auth";
+router.beforeEach((to, from, next) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const authRequired = to.meta.login;
+  if (!user && authRequired) {
+    next("/");
+  } else {
+    next();
+  }
+});
 export default router;

@@ -19,7 +19,7 @@
                 id="password"
                 prepend-icon="mdi-lock"
                 name="password"
-                label="Introduzca su contraseña"
+                label="Contraseña de mínimo 6 caracteres"
                 type="password"
                 v-model="signUpUser.password"
               ></v-text-field>
